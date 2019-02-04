@@ -1,0 +1,36 @@
+[
+    {
+        "name": "${NAME}",
+        "image": "${DOCKER_IMAGE_NAME}:${DOCKER_IMAGE_TAG}",
+        "cpu": ${CPU},
+        "memory": ${MEMORY},
+        "portMappings": [
+            {
+                "containerPort": ${SONAR_CONTAINER_WEB_PORT},
+                "hostPort": ${SONAR_CONTAINER_WEB_PORT}
+            }
+        ],
+        "environment": [
+            {
+                "name": "sonar.jdbc.username",
+                "value": "${SONAR_JDBC_USERNAME}"
+            },
+            {
+                "name": "sonar.jdbc.password",
+                "value": "${SONAR_JDBC_PASSWORD}"
+            },
+            {
+                "name": "sonar.jdbc.url",
+                "value": "${SONAR_JDBC_URL}"
+            }
+        ],
+        "logConfiguration": {
+            "logDriver": "awslogs",
+            "options": {
+              "awslogs-group": "${CLOUDWATCH_PATH}",
+              "awslogs-region": "${AWS_REGION}",
+              "awslogs-stream-prefix": "ecs"
+            }
+        }
+    }
+]
