@@ -4,9 +4,8 @@ This Terraform module deploys a SonarQube community server on AWS.
 
 ## Usage
  
-	module "sonarqube" {
-		source = "jnonino/sonarqube/aws"
-        
+    module "sonarqube" {
+        source = "jnonino/sonarqube/aws"
         name_preffix        = "${var.name_preffix}"
         profile             = "${var.profile}"
         region              = "${var.region}"
