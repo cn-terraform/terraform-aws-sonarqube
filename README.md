@@ -1,6 +1,6 @@
 # SonarQube Terraform Module for AWS #
 
-This Terraform module deploys a SonarQube community server on AWS.
+This Terraform module deploys a SonarQube community server on AWS. Based on official Sonarqube Docker image <https://hub.docker.com/_/sonarqube>.
 
 ## Usage
  
