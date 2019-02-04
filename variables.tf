@@ -21,6 +21,10 @@ variable "region" {
 variable "vpc_id" {
     description = "ID of the VPC"
 }
+variable "availability_zones" {
+    type        = "list"
+    description = "List of Availability Zones"
+}
 variable "public_subnets_ids" {
     type        = "list"
     description = "List of Public Subnets IDs"
@@ -28,8 +32,4 @@ variable "public_subnets_ids" {
 variable "private_subnets_ids" {
     type        = "list"
     description = "List of Private Subnets IDs"
-}
-variable "availability_zones" {
-    type        = "list"
-    description = "List of Availability Zones"
 }

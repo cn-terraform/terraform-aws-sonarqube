@@ -10,6 +10,7 @@ This Terraform module deploys a SonarQube community server on AWS. Based on offi
         profile             = "${var.profile}"
         region              = "${var.region}"
         vpc_id              = "${module.networking.vpc_id}"
+        availability_zones  = [ "${var.availability_zones}" ]
         public_subnets_ids  = [ "${module.networking.public_subnets_ids}" ]
         private_subnets_ids = [ "${module.networking.private_subnets_ids}" ]
     }
