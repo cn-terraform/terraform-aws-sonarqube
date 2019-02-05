@@ -51,3 +51,27 @@ resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
         Name = "${var.name_preffix}-sonar-aurora-db-cluster-instances-${count.index}"
     } 
 }
+
+# ---------------------------------------------------------------------------------------------------------------------
+# AWS Security Groups - Allow traffic to Aurora DB only on PostgreSQL port and only coming from ECS SG
+# ---------------------------------------------------------------------------------------------------------------------
+resource "aws_security_group" "aurora_sg" {
+    name        = "${var.name_preffix}-sonar-aurora-sg"
+    description = "Allow traffic to Aurora DB only on PostgreSQL port and only coming from ECS SG"
+    vpc_id      = "${var.vpc_id}"
+    ingress {
+        protocol        = "tcp"
+        from_port       = "${local.sonar_postgre_sql_port}"
+        to_port         = "${local.sonar_postgre_sql_port}"
+        security_groups = [ "${module.ecs_fargate.ecs_tasks_sg_id}" ]
+    }
+    egress {
+        protocol    = -1
+        from_port   = 0 
+        to_port     = 0 
+        cidr_blocks = ["0.0.0.0/0"]
+    }
+    tags {
+        Name = "${var.name_preffix}-sonar-aurora-sg"
+    } 
+}
