@@ -4,6 +4,10 @@ This Terraform module deploys a SonarQube community server on AWS. Based on offi
 
 ## Usage
  
+Check valid versions on:
+* Github Releases: <https://github.com/jnonino/terraform-aws-sonarqube/releases>
+* Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/sonarqube/aws>
+
     module "sonarqube" {
         source              = "jnonino/sonarqube/aws"
         version             = "1.0.0"
