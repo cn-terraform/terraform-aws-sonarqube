@@ -6,6 +6,7 @@ This Terraform module deploys a SonarQube community server on AWS. Based on offi
  
     module "sonarqube" {
         source              = "jnonino/sonarqube/aws"
+        version             = "1.0.0"
         name_preffix        = "${var.name_preffix}"
         profile             = "${var.profile}"
         region              = "${var.region}"
