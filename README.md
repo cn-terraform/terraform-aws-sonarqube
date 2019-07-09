@@ -10,17 +10,17 @@ Check valid versions on:
 * Github Releases: <https://github.com/jnonino/terraform-aws-sonarqube/releases>
 * Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/sonarqube/aws>
 
-    module "sonarqube" {
-        source              = "jnonino/sonarqube/aws"
-        version             = "1.0.0"
-        name_preffix        = "${var.name_preffix}"
-        profile             = "${var.profile}"
-        region              = "${var.region}"
-        vpc_id              = "${module.networking.vpc_id}"
-        availability_zones  = [ "${var.availability_zones}" ]
-        public_subnets_ids  = [ "${module.networking.public_subnets_ids}" ]
-        private_subnets_ids = [ "${module.networking.private_subnets_ids}" ]
-    }
+        module "sonarqube" {
+            source              = "jnonino/sonarqube/aws"
+            version             = "1.0.0"
+            name_preffix        = "${var.name_preffix}"
+            profile             = "${var.profile}"
+            region              = "${var.region}"
+            vpc_id              = "${module.networking.vpc_id}"
+            availability_zones  = [ "${var.availability_zones}" ]
+            public_subnets_ids  = [ "${module.networking.public_subnets_ids}" ]
+            private_subnets_ids = [ "${module.networking.private_subnets_ids}" ]
+        }
 
 ## Output values
 
