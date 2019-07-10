@@ -41,8 +41,7 @@ resource "aws_kms_key" "encryption_key" {
 module "ecs_fargate" {
   source  = "jnonino/ecs-fargate/aws"
   version = "2.0.1"
-
-  #source              = "../terraform-aws-ecs-fargate"
+  #source = "../terraform-aws-ecs-fargate"
 
   name_preffix                 = "${var.name_preffix}-sonar"
   profile                      = var.profile
@@ -72,4 +71,3 @@ module "ecs_fargate" {
     },
   ]
 }
-
