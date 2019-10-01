@@ -2,22 +2,22 @@
 
 This Terraform module deploys a SonarQube community server on AWS. Based on official Sonarqube Docker image <https://hub.docker.com/_/sonarqube>.
 
-[![CircleCI](https://circleci.com/gh/jnonino/terraform-aws-sonarqube/tree/master.svg?style=svg)](https://circleci.com/gh/jnonino/terraform-aws-sonarqube/tree/master)
-[![](https://img.shields.io/github/license/jnonino/terraform-aws-sonarqube)](https://github.com/jnonino/terraform-aws-sonarqube)
-[![](https://img.shields.io/github/issues/jnonino/terraform-aws-sonarqube)](https://github.com/jnonino/terraform-aws-sonarqube)
-[![](https://img.shields.io/github/issues-closed/jnonino/terraform-aws-sonarqube)](https://github.com/jnonino/terraform-aws-sonarqube)
-[![](https://img.shields.io/github/languages/code-size/jnonino/terraform-aws-sonarqube)](https://github.com/jnonino/terraform-aws-sonarqube)
-[![](https://img.shields.io/github/repo-size/jnonino/terraform-aws-sonarqube)](https://github.com/jnonino/terraform-aws-sonarqube)
+[![CircleCI](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/master.svg?style=svg)](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/master)
+[![](https://img.shields.io/github/license/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
+[![](https://img.shields.io/github/issues/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
+[![](https://img.shields.io/github/issues-closed/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
+[![](https://img.shields.io/github/languages/code-size/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
+[![](https://img.shields.io/github/repo-size/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
 
 ## Usage
  
 Check valid versions on:
-* Github Releases: <https://github.com/jnonino/terraform-aws-sonarqube/releases>
-* Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/sonarqube/aws>
+* Github Releases: <https://github.com/cn-terraform/terraform-aws-sonarqube/releases>
+* Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/sonarqube/aws>
 
         module "sonarqube" {
-            source              = "jnonino/sonarqube/aws"
-            version             = "1.0.0"
+            source              = "cn-terraform/sonarqube/aws"
+            version             = "2.0.1"
             name_preffix        = var.name_preffix
             profile             = var.profile
             region              = var.region
@@ -30,7 +30,7 @@ Check valid versions on:
 The networking module should look like this:
 
         module "networking" {
-    	    source          = "jnonino/networking/aws"
+    	    source          = "cn-terraform/networking/aws"
             version         = "2.0.3"
             name_preffix    = "base"
             profile         = "aws_profile"
@@ -42,8 +42,8 @@ The networking module should look like this:
     	}
 
 Check versions for this module on:
-* Github Releases: <https://github.com/jnonino/terraform-aws-networking/releases>
-* Terraform Module Registry: <https://registry.terraform.io/modules/jnonino/networking/aws>
+* Github Releases: <https://github.com/cn-terraform/terraform-aws-networking/releases>
+* Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/networking/aws>
 
 ## Output values
 
