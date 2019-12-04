@@ -47,8 +47,8 @@ Check versions for this module on:
 
 ## Output values
 
-* jenkins_master_alb_id: Jenkins Master Application Load Balancer ID.
-* jenkins_master_alb_arn: Jenkins Master Application Load Balancer ARN.
-* jenkins_master_alb_arn_suffix: Jenkins Master Application Load Balancer ARN Suffix.
-* jenkins_master_alb_dns_name: Jenkins Master Application Load Balancer DNS Name.
-* jenkins_master_alb_zone_id: Jenkins Master Application Load Balancer Zone ID.
+* sonar_lb_id: SonarQube Load Balancer ID
+* sonar_lb_arn: SonarQube Load Balancer ARN
+* sonar_lb_arn_suffix: SonarQube Load Balancer ARN Suffix
+* sonar_lb_dns_name: SonarQube Load Balancer DNS Name
+* sonar_lb_zone_id: SonarQube Load Balancer Zone ID
