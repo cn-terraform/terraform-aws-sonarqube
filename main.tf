@@ -10,7 +10,7 @@ provider "aws" {
 # Variables
 # ---------------------------------------------------------------------------------------------------------------------
 locals {
-  sonar_postgre_sql_db_version = "10.6"
+  sonar_postgre_sql_db_version = "11.5"
   sonar_postgre_sql_port       = 5432
   sonar_postgre_sql_db         = "sonar"
   sonar_db_instance_size       = "db.r4.large"
@@ -40,18 +40,18 @@ resource "aws_kms_key" "encryption_key" {
 # ---------------------------------------------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.1"
+  version = "2.0.8"
   #source = "../terraform-aws-ecs-fargate"
 
   name_preffix                 = "${var.name_preffix}-sonar"
   profile                      = var.profile
   region                       = var.region
   vpc_id                       = var.vpc_id
-  availability_zones           = ["var.availability_zones"]
-  public_subnets_ids           = ["var.public_subnets_ids"]
-  private_subnets_ids          = ["var.private_subnets_ids"]
+  availability_zones           = [ var.availability_zones ]
+  public_subnets_ids           = [ var.public_subnets_ids ]
+  private_subnets_ids          = [ var.private_subnets_ids ]
   container_name               = "${var.name_preffix}-sonar"
-  container_image              = "sonarqube:7.6-community"
+  container_image              = "sonarqube:lts"
   container_cpu                = 1024
   container_memory             = 8192
   container_memory_reservation = 2048
