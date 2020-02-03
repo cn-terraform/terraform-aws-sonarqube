@@ -10,14 +10,14 @@ This Terraform module deploys a SonarQube community server on AWS. Based on offi
 [![](https://img.shields.io/github/repo-size/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
 
 ## Usage
- 
+
 Check valid versions on:
 * Github Releases: <https://github.com/cn-terraform/terraform-aws-sonarqube/releases>
 * Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/sonarqube/aws>
 
         module "sonarqube" {
             source              = "cn-terraform/sonarqube/aws"
-            version             = "2.0.3"
+            version             = "2.0.4"
             name_preffix        = var.name_preffix
             profile             = var.profile
             region              = var.region
@@ -31,7 +31,7 @@ The networking module should look like this:
 
         module "networking" {
     	    source          = "cn-terraform/networking/aws"
-            version         = "2.0.3"
+            version         = "2.0.4"
             name_preffix    = "base"
             profile         = "aws_profile"
             region          = "us-east-1"
