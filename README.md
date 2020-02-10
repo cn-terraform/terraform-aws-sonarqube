@@ -17,7 +17,7 @@ Check valid versions on:
 
         module "sonarqube" {
             source              = "cn-terraform/sonarqube/aws"
-            version             = "2.0.4"
+            version             = "2.0.5"
             name_preffix        = var.name_preffix
             profile             = var.profile
             region              = var.region
