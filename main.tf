@@ -47,9 +47,9 @@ module "ecs_fargate" {
   profile                      = var.profile
   region                       = var.region
   vpc_id                       = var.vpc_id
-  availability_zones           = [ var.availability_zones ]
-  public_subnets_ids           = [ var.public_subnets_ids ]
-  private_subnets_ids          = [ var.private_subnets_ids ]
+  availability_zones           = var.availability_zones
+  public_subnets_ids           = var.public_subnets_ids
+  private_subnets_ids          = var.private_subnets_ids
   container_name               = "${var.name_preffix}-sonar"
   container_image              = "sonarqube:lts"
   container_cpu                = 1024
