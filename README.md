@@ -15,36 +15,6 @@ Check valid versions on:
 * Github Releases: <https://github.com/cn-terraform/terraform-aws-sonarqube/releases>
 * Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/sonarqube/aws>
 
-        module "sonarqube" {
-            source              = "cn-terraform/sonarqube/aws"
-            version             = "2.0.5"
-            name_preffix        = var.name_preffix
-            profile             = var.profile
-            region              = var.region
-            vpc_id              = module.networking.vpc_id
-            availability_zones  = module.networking.availability_zones
-            public_subnets_ids  = module.networking.public_subnets_ids
-            private_subnets_ids = module.networking.private_subnets_ids
-        }
-
-The networking module should look like this:
-
-        module "networking" {
-    	    source          = "cn-terraform/networking/aws"
-            version         = "2.0.4"
-            name_preffix    = "base"
-            profile         = "aws_profile"
-            region          = "us-east-1"
-            vpc_cidr_block  = "192.168.0.0/16"
-            availability_zones                          = [ "us-east-1a", "us-east-1b", "us-east-1c", "us-east-1d" ]
-            public_subnets_cidrs_per_availability_zone  = [ "192.168.0.0/19", "192.168.32.0/19", "192.168.64.0/19", "192.168.96.0/19" ]
-            private_subnets_cidrs_per_availability_zone = [ "192.168.128.0/19", "192.168.160.0/19", "192.168.192.0/19", "192.168.224.0/19" ]
-    	}
-
-Check versions for this module on:
-* Github Releases: <https://github.com/cn-terraform/terraform-aws-networking/releases>
-* Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/networking/aws>
-
 ## Output values
 
 * sonar_lb_id: SonarQube Load Balancer ID

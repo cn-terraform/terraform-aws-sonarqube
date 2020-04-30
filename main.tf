@@ -10,13 +10,13 @@ provider "aws" {
 # Variables
 # ---------------------------------------------------------------------------------------------------------------------
 locals {
-  sonar_postgre_sql_db_version = "11.5"
-  sonar_postgre_sql_port       = 5432
-  sonar_postgre_sql_db         = "sonar"
-  sonar_db_instance_size       = "db.r4.large"
-  sonar_db_name                = "sonar"
-  sonar_db_username            = "sonar"
-  sonar_db_password            = "${var.name_preffix}-sonar-pass"
+  sonar_postgres_sql_db_version = "11.6"
+  sonar_postgre_sql_port        = 5432
+  sonar_postgre_sql_db          = "sonar"
+  sonar_db_instance_size        = "db.r4.large"
+  sonar_db_name                 = "sonar"
+  sonar_db_username             = "sonar"
+  sonar_db_password             = "${var.name_preffix}-sonar-pass"
 }
 
 # ---------------------------------------------------------------------------------------------------------------------

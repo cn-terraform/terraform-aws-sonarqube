@@ -25,7 +25,7 @@ resource "aws_rds_cluster" "aurora_db" {
   #enabled_cloudwatch_logs_exports = ["audit", "error", "general"]
   # Database
   engine          = "aurora-postgresql"
-  engine_version  = local.sonar_postgre_sql_db_version
+  engine_version  = local.sonar_postgres_sql_db_version
   database_name   = local.sonar_db_name
   master_username = local.sonar_db_username
   master_password = local.sonar_db_password
@@ -48,7 +48,7 @@ resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
   cluster_identifier   = aws_rds_cluster.aurora_db.id
   db_subnet_group_name = aws_db_subnet_group.aurora_db_subnet_group.id
   engine               = "aurora-postgresql"
-  engine_version       = local.sonar_postgre_sql_db_version
+  engine_version       = local.sonar_postgres_sql_db_version
   instance_class       = local.sonar_db_instance_size
   publicly_accessible  = true
   tags = {
