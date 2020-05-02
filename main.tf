@@ -38,6 +38,7 @@ module "ecs_fargate" {
   container_image              = "cnservices/sonarqube"
   container_cpu                = 4096
   container_memory             = 8192
+  container_memory_reservation = 4096
   lb_http_ports                = [ 9000, 9001 ]
   lb_https_ports               = []
   port_mappings = [
@@ -54,15 +55,15 @@ module "ecs_fargate" {
   ]
   environment = [
     {
-      name  = "sonar.jdbc.username"
+      name  = "SONAR_JDBC_USERNAME"
       value = local.sonar_db_username
     },
     {
-      name  = "sonar.jdbc.password"
+      name  = "SONAR_JDBC_PASSWORD"
       value = local.sonar_db_password
     },
     {
-      name  = "sonar.jdbc.url"
+      name  = "SONAR_JDBC_URL"
       value = "jdbc:postgresql://${aws_rds_cluster.aurora_db.endpoint}/${local.sonar_db_name}"
     },
   ]
