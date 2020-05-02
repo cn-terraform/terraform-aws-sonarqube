@@ -23,9 +23,9 @@ locals {
 # ECS Fargate Service
 # ---------------------------------------------------------------------------------------------------------------------
 module "ecs_fargate" {
-  # source  = "cn-terraform/ecs-fargate/aws"
-  # version = "2.0.12"
-  source = "../terraform-aws-ecs-fargate"
+  source  = "cn-terraform/ecs-fargate/aws"
+  version = "2.0.12"
+  # source = "../terraform-aws-ecs-fargate"
 
   name_preffix                 = "${var.name_preffix}-sonar"
   profile                      = var.profile
@@ -36,14 +36,19 @@ module "ecs_fargate" {
   private_subnets_ids          = var.private_subnets_ids
   container_name               = "${var.name_preffix}-sonar"
   container_image              = "cnservices/sonarqube"
-  container_cpu                = 1024
+  container_cpu                = 4096
   container_memory             = 8192
-  lb_http_ports                = [ 9000 ]
+  lb_http_ports                = [ 9000, 9001 ]
   lb_https_ports               = []
   port_mappings = [
     {
       containerPort = 9000
       hostPort      = 9000
+      protocol      = "tcp"
+    },
+    {
+      containerPort = 9001
+      hostPort      = 9001
       protocol      = "tcp"
     }
   ]
