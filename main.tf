@@ -1,12 +1,4 @@
 # ---------------------------------------------------------------------------------------------------------------------
-# PROVIDER
-# ---------------------------------------------------------------------------------------------------------------------
-provider "aws" {
-  profile = var.profile
-  region  = var.region
-}
-
-# ---------------------------------------------------------------------------------------------------------------------
 # Variables
 # ---------------------------------------------------------------------------------------------------------------------
 locals {
@@ -24,13 +16,10 @@ locals {
 # ---------------------------------------------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.12"
+  version = "2.0.14"
   # source = "../terraform-aws-ecs-fargate"
 
   name_preffix                 = "${var.name_preffix}-sonar"
-  profile                      = var.profile
-  region                       = var.region
-
   vpc_id                       = var.vpc_id
   public_subnets_ids           = var.public_subnets_ids
   private_subnets_ids          = var.private_subnets_ids
