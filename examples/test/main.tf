@@ -15,6 +15,7 @@ module "base-network" {
 module "sonar" {
   source              = "../../"
   name_preffix        = "sonar"
+  region              = "us-east-1"
   vpc_id              = module.base-network.vpc_id
   availability_zones  = module.base-network.availability_zones
   public_subnets_ids  = module.base-network.public_subnets_ids
