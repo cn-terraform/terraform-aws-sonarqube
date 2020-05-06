@@ -12,6 +12,17 @@ locals {
 }
 
 #------------------------------------------------------------------------------
+# AWS Cloudwatch Logs
+#------------------------------------------------------------------------------
+module aws_cw_logs {
+  source  = "cn-terraform/cloudwatch-logs/aws"
+  version = "1.0.6"
+  # source  = "../terraform-aws-cloudwatch-logs"
+
+  logs_path = "/ecs/service/${var.name_preffix}-sonar"
+}
+
+#------------------------------------------------------------------------------
 # ECS Fargate Service
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
@@ -60,7 +71,7 @@ module "ecs_fargate" {
     logDriver = "awslogs"
     options = {
       "awslogs-region"        = var.region
-      "awslogs-group"         = "/ecs/service/${var.name_preffix}"
+      "awslogs-group"         = "/ecs/service/${var.name_preffix}-sonar"
       "awslogs-stream-prefix" = "ecs"
     }
     secretOptions = null
