@@ -56,4 +56,13 @@ module "ecs_fargate" {
       value = "jdbc:postgresql://${aws_rds_cluster.aurora_db.endpoint}/${local.sonar_db_name}"
     },
   ]
+  log_configuration = {
+    logDriver = "awslogs"
+    options = {
+      "awslogs-region"        = var.region
+      "awslogs-group"         = "/ecs/service/${var.name_preffix}"
+      "awslogs-stream-prefix" = "ecs"
+    }
+    secretOptions = null
+  }
 }
