@@ -27,7 +27,7 @@ module aws_cw_logs {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.15"
+  version = "2.0.16"
   # source = "../terraform-aws-ecs-fargate"
 
   name_preffix                 = "${var.name_preffix}-sonar"
