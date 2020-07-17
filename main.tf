@@ -35,21 +35,16 @@ module "ecs_fargate" {
   public_subnets_ids           = var.public_subnets_ids
   private_subnets_ids          = var.private_subnets_ids
   container_name               = "${var.name_preffix}-sonar"
-  container_image              = "cnservices/sonarqube"
+  container_image              = "sonarqube:lts"
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096
-  lb_http_ports                = [ 9000, 9001 ]
+  lb_http_ports                = [ 9000 ]
   lb_https_ports               = []
   port_mappings = [
     {
       containerPort = 9000
       hostPort      = 9000
-      protocol      = "tcp"
-    },
-    {
-      containerPort = 9001
-      hostPort      = 9001
       protocol      = "tcp"
     }
   ]
