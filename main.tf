@@ -39,8 +39,18 @@ module "ecs_fargate" {
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096
-  lb_http_ports                = [ 9000 ]
+  lb_http_ports                = [9000]
   lb_https_ports               = []
+  command = [
+    "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmapfs=false"
+  ]
+  ulimits = [
+    {
+      "name" : "nofile",
+      "softLimit" : 65535,
+      "hardLimit" : 65535
+    }
+  ]
   port_mappings = [
     {
       containerPort = 9000
