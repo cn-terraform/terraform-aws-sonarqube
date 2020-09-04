@@ -23,7 +23,7 @@ resource "random_password" "master_password" {
 #------------------------------------------------------------------------------
 module aws_cw_logs {
   source  = "cn-terraform/cloudwatch-logs/aws"
-  version = "1.0.6"
+  version = "1.0.7"
   # source  = "../terraform-aws-cloudwatch-logs"
 
   logs_path = "/ecs/service/${var.name_prefix}-sonar"
@@ -34,10 +34,10 @@ module aws_cw_logs {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.17"
+  version = "2.0.18"
   # source = "../terraform-aws-ecs-fargate"
 
-  name_preffix                 = "${var.name_prefix}-sonar"
+  name_prefix                  = "${var.name_prefix}-sonar"
   vpc_id                       = var.vpc_id
   public_subnets_ids           = var.public_subnets_ids
   private_subnets_ids          = var.private_subnets_ids
