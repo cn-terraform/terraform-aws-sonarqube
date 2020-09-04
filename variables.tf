@@ -3,7 +3,7 @@
 #------------------------------------------------------------------------------
 variable "name_prefix" {
   type        = string
-  description = "Name preffix for resources on AWS"
+  description = "Name prefix for resources on AWS"
 }
 
 #------------------------------------------------------------------------------
