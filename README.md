@@ -38,11 +38,11 @@ Check valid versions on:
 | db\_name | Default DB name | `string` | `"sonar"` | no |
 | db\_password | DB password | `string` | `""` | no |
 | db\_username | Default DB username | `string` | `"sonar"` | no |
-| name\_prefix | Name preffix for resources on AWS | `any` | n/a | yes |
+| name\_prefix | Name preffix for resources on AWS | `string` | n/a | yes |
 | private\_subnets\_ids | List of Private Subnets IDs | `list(string)` | n/a | yes |
 | public\_subnets\_ids | List of Public Subnets IDs | `list(string)` | n/a | yes |
-| region | AWS Region the infrastructure is hosted in | `any` | n/a | yes |
-| vpc\_id | ID of the VPC | `any` | n/a | yes |
+| region | AWS Region the infrastructure is hosted in | `string` | n/a | yes |
+| vpc\_id | ID of the VPC | `string` | n/a | yes |
 
 ## Outputs
 

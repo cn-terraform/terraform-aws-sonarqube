@@ -2,6 +2,7 @@
 # Misc
 #------------------------------------------------------------------------------
 variable "name_prefix" {
+  type        = string
   description = "Name preffix for resources on AWS"
 }
 
@@ -9,6 +10,7 @@ variable "name_prefix" {
 # AWS REGION
 #------------------------------------------------------------------------------
 variable "region" {
+  type        = string
   description = "AWS Region the infrastructure is hosted in"
 }
 
@@ -16,6 +18,7 @@ variable "region" {
 # AWS Networking
 #------------------------------------------------------------------------------
 variable "vpc_id" {
+  type        = string
   description = "ID of the VPC"
 }
 
