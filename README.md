@@ -15,10 +15,38 @@ Check valid versions on:
 * Github Releases: <https://github.com/cn-terraform/terraform-aws-sonarqube/releases>
 * Terraform Module Registry: <https://registry.terraform.io/modules/cn-terraform/sonarqube/aws>
 
-## Output values
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
+## Requirements
 
-* sonar_lb_id: SonarQube Load Balancer ID
-* sonar_lb_arn: SonarQube Load Balancer ARN
-* sonar_lb_arn_suffix: SonarQube Load Balancer ARN Suffix
-* sonar_lb_dns_name: SonarQube Load Balancer DNS Name
-* sonar_lb_zone_id: SonarQube Load Balancer Zone ID
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| availability\_zones | List of Availability Zones | `list` | n/a | yes |
+| name\_preffix | Name preffix for resources on AWS | `any` | n/a | yes |
+| private\_subnets\_ids | List of Private Subnets IDs | `list` | n/a | yes |
+| public\_subnets\_ids | List of Public Subnets IDs | `list` | n/a | yes |
+| region | AWS Region the infrastructure is hosted in | `any` | n/a | yes |
+| vpc\_id | ID of the VPC | `any` | n/a | yes |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| sonar\_lb\_arn | SonarQube Load Balancer ARN |
+| sonar\_lb\_arn\_suffix | SonarQube Load Balancer ARN Suffix |
+| sonar\_lb\_dns\_name | SonarQube Load Balancer DNS Name |
+| sonar\_lb\_id | SonarQube Load Balancer ID |
+| sonar\_lb\_zone\_id | SonarQube Load Balancer Zone ID |
+
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
