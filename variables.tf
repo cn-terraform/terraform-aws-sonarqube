@@ -1,7 +1,7 @@
 #------------------------------------------------------------------------------
 # Misc
 #------------------------------------------------------------------------------
-variable "name_preffix" {
+variable "name_prefix" {
   description = "Name preffix for resources on AWS"
 }
 
@@ -20,17 +20,41 @@ variable "vpc_id" {
 }
 
 variable "availability_zones" {
-  type        = list
+  type        = list(string)
   description = "List of Availability Zones"
 }
 
 variable "public_subnets_ids" {
-  type        = list
+  type        = list(string)
   description = "List of Public Subnets IDs"
 }
 
 variable "private_subnets_ids" {
-  type        = list
+  type        = list(string)
   description = "List of Private Subnets IDs"
+}
+
+variable "db_instance_size" {
+  type        = string
+  default     = "db.r4.large"
+  description = "DB instance size"
+}
+
+variable "db_name" {
+  type        = string
+  default     = "sonar"
+  description = "Default DB name"
+}
+
+variable "db_username" {
+  type        = string
+  default     = "sonar"
+  description = "Default DB username"
+}
+
+variable "db_password" {
+  type        = string
+  default     = ""
+  description = "DB password"
 }
 

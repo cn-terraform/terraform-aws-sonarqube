@@ -2,13 +2,20 @@
 # Variables
 #------------------------------------------------------------------------------
 locals {
-  sonar_postgres_sql_db_version = "11.6"
-  sonar_postgre_sql_port        = 5432
-  sonar_postgre_sql_db          = "sonar"
-  sonar_db_instance_size        = "db.r4.large"
-  sonar_db_name                 = "sonar"
-  sonar_db_username             = "sonar"
-  sonar_db_password             = "${var.name_preffix}-sonar-pass"
+  sonar_db_engine_version = "11.6"
+  sonar_db_port           = 5432
+  sonar_db_instance_size  = var.db_instance_size
+  sonar_db_name           = var.db_name
+  sonar_db_username       = var.db_username
+  sonar_db_password       = var.db_password == "" ? random_password.master_password.result : var.db_password
+}
+
+#------------------------------------------------------------------------------
+# Random password for RDS
+#------------------------------------------------------------------------------
+resource "random_password" "master_password" {
+  length  = 10
+  special = false
 }
 
 #------------------------------------------------------------------------------
@@ -19,7 +26,7 @@ module aws_cw_logs {
   version = "1.0.6"
   # source  = "../terraform-aws-cloudwatch-logs"
 
-  logs_path = "/ecs/service/${var.name_preffix}-sonar"
+  logs_path = "/ecs/service/${var.name_prefix}-sonar"
 }
 
 #------------------------------------------------------------------------------
@@ -30,11 +37,11 @@ module "ecs_fargate" {
   version = "2.0.17"
   # source = "../terraform-aws-ecs-fargate"
 
-  name_preffix                 = "${var.name_preffix}-sonar"
+  name_preffix                 = "${var.name_prefix}-sonar"
   vpc_id                       = var.vpc_id
   public_subnets_ids           = var.public_subnets_ids
   private_subnets_ids          = var.private_subnets_ids
-  container_name               = "${var.name_preffix}-sonar"
+  container_name               = "${var.name_prefix}-sonar"
   container_image              = "sonarqube:lts"
   container_cpu                = 4096
   container_memory             = 8192
@@ -76,7 +83,7 @@ module "ecs_fargate" {
     logDriver = "awslogs"
     options = {
       "awslogs-region"        = var.region
-      "awslogs-group"         = "/ecs/service/${var.name_preffix}-sonar"
+      "awslogs-group"         = "/ecs/service/${var.name_prefix}-sonar"
       "awslogs-stream-prefix" = "ecs"
     }
     secretOptions = null
