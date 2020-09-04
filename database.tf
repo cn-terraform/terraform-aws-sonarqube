@@ -83,7 +83,7 @@ resource "aws_security_group" "aurora_sg" {
     # If the expression in the following list itself returns a list, remove the
     # brackets to avoid interpretation as a list of lists. If the expression
     # returns a single list item then leave it as-is and remove this TODO comment.
-    security_groups = [ module.ecs_fargate.ecs_tasks_sg_id ]
+    security_groups = [module.ecs_fargate.ecs_tasks_sg_id]
   }
   egress {
     protocol    = -1
