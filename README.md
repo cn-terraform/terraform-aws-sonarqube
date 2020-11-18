@@ -2,7 +2,7 @@
 
 This Terraform module deploys a SonarQube community server on AWS. Based on official Sonarqube Docker image <https://hub.docker.com/_/sonarqube>.
 
-[![CircleCI](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/master.svg?style=svg)](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/master)
+[![CircleCI](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/main.svg?style=svg)](https://circleci.com/gh/cn-terraform/terraform-aws-sonarqube/tree/main)
 [![](https://img.shields.io/github/license/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
 [![](https://img.shields.io/github/issues/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
 [![](https://img.shields.io/github/issues-closed/cn-terraform/terraform-aws-sonarqube)](https://github.com/cn-terraform/terraform-aws-sonarqube)
