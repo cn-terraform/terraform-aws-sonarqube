@@ -2,7 +2,7 @@
 # Variables
 #------------------------------------------------------------------------------
 locals {
-  sonar_db_engine_version = "11.6"
+  sonar_db_engine_version = var.db_engine_version
   sonar_db_port           = 5432
   sonar_db_instance_size  = var.db_instance_size
   sonar_db_name           = var.db_name
@@ -42,7 +42,7 @@ module "ecs_fargate" {
   public_subnets_ids           = var.public_subnets_ids
   private_subnets_ids          = var.private_subnets_ids
   container_name               = "${var.name_prefix}-sonar"
-  container_image              = "sonarqube:lts"
+  container_image              = var.sonarqube_image
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096
@@ -54,7 +54,7 @@ module "ecs_fargate" {
   }
   lb_https_ports = {}
   command = [
-    "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmapfs=false"
+    "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
   ]
   ulimits = [
     {
@@ -81,7 +81,7 @@ module "ecs_fargate" {
     },
     {
       name  = "SONAR_JDBC_URL"
-      value = "jdbc:postgresql://${aws_rds_cluster.aurora_db.endpoint}/${local.sonar_db_name}"
+      value = "jdbc:postgresql://${aws_rds_cluster.aurora_db.endpoint}/${local.sonar_db_name}?sslmode=require"
     },
   ]
   log_configuration = {

@@ -61,3 +61,20 @@ variable "db_password" {
   description = "DB password"
 }
 
+#------------------------------------------------------------------------------
+# AWS RDS settings
+#------------------------------------------------------------------------------
+variable "db_engine_version" {
+  type        = string
+  default     = "11.7"
+  description = "DB engine version"
+}
+
+#------------------------------------------------------------------------------
+# Sonarqube image version
+#------------------------------------------------------------------------------
+variable "sonarqube_image" {
+  type        = string
+  default     = "sonarqube:lts"
+  description = "Sonarqube image"
+}
