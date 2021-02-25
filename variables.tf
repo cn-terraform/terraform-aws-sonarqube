@@ -74,7 +74,7 @@ variable "db_engine_version" {
 # Sonarqube image version
 #------------------------------------------------------------------------------
 variable "sonarqube_image" {
+  description = "Sonarqube image"
   type        = string
   default     = "sonarqube:lts"
-  description = "Sonarqube image"
 }
