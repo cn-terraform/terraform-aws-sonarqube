@@ -23,7 +23,7 @@ resource "random_password" "master_password" {
 #------------------------------------------------------------------------------
 module "aws_cw_logs" {
   source  = "cn-terraform/cloudwatch-logs/aws"
-  version = "1.0.7"
+  version = "1.0.8"
   # source  = "../terraform-aws-cloudwatch-logs"
 
   logs_path = "/ecs/service/${var.name_prefix}-sonar"
@@ -34,7 +34,7 @@ module "aws_cw_logs" {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.24"
+  version = "2.0.26"
   # source = "../terraform-aws-ecs-fargate"
 
   name_prefix                  = "${var.name_prefix}-sonar"
