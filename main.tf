@@ -27,6 +27,7 @@ module "aws_cw_logs" {
   # source  = "../terraform-aws-cloudwatch-logs"
 
   logs_path = "/ecs/service/${var.name_prefix}-sonar"
+  tags      = var.tags
 }
 
 #------------------------------------------------------------------------------
@@ -93,4 +94,6 @@ module "ecs_fargate" {
     }
     secretOptions = null
   }
+
+  tags = var.tags
 }

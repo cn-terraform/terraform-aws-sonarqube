@@ -5,6 +5,10 @@ resource "aws_kms_key" "encryption_key" {
   description         = "Sonar Encryption Key"
   is_enabled          = true
   enable_key_rotation = true
+
+  tags = merge({
+    Name = "${var.name_prefix}-sonar-kms-key"
+  }, var.tags)
 }
 
 #------------------------------------------------------------------------------
@@ -13,6 +17,10 @@ resource "aws_kms_key" "encryption_key" {
 resource "aws_db_subnet_group" "aurora_db_subnet_group" {
   name       = "${var.name_prefix}-sonar-aurora-db-subnet-group"
   subnet_ids = var.private_subnets_ids
+
+  tags = merge({
+    Name = "${var.name_prefix}-sonar-aurora-db-subnet-group"
+  }, var.tags)
 }
 
 #------------------------------------------------------------------------------
@@ -43,9 +51,9 @@ resource "aws_rds_cluster" "aurora_db" {
   backup_retention_period = 3
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
-  tags = {
+  tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-db"
-  }
+  }, var.tags)
 }
 
 #------------------------------------------------------------------------------
@@ -60,9 +68,9 @@ resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
   engine_version       = local.sonar_db_engine_version
   instance_class       = local.sonar_db_instance_size
   publicly_accessible  = true
-  tags = {
+  tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-db-cluster-instances-${count.index}"
-  }
+  }, var.tags)
 }
 
 #------------------------------------------------------------------------------
@@ -91,8 +99,7 @@ resource "aws_security_group" "aurora_sg" {
     to_port     = 0
     cidr_blocks = ["0.0.0.0/0"]
   }
-  tags = {
+  tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-sg"
-  }
+  }, var.tags)
 }
-
