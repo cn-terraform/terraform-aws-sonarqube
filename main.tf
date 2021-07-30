@@ -39,11 +39,12 @@ module "ecs_fargate" {
   # source = "../terraform-aws-ecs-fargate"
 
   name_prefix                  = "${var.name_prefix}-sonar"
-  vpc_id                       = var.vpc_id
-  public_subnets_ids           = var.public_subnets_ids
-  private_subnets_ids          = var.private_subnets_ids
+  vpc_id                       = data.terraform_remote_state.aws_simulator_network.outputs.vpc_id
+  public_subnets_ids           = data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids
+  private_subnets_ids          = data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids
   container_name               = "${var.name_prefix}-sonar"
   container_image              = var.sonarqube_image
+  assign_public_ip             = true
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096

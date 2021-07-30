@@ -4,6 +4,7 @@
 variable "name_prefix" {
   type        = string
   description = "Name prefix for resources on AWS"
+  default     = "movai"
 }
 
 variable "tags" {
@@ -18,30 +19,35 @@ variable "tags" {
 variable "region" {
   type        = string
   description = "AWS Region the infrastructure is hosted in"
+  default     = "us-east-2"
 }
 
 #------------------------------------------------------------------------------
 # AWS Networking
 #------------------------------------------------------------------------------
-variable "vpc_id" {
-  type        = string
-  description = "ID of the VPC"
-}
+# variable "data.terraform_remote_state.aws_simulator_network.outputs.vpc_id" {
+#   type        = string
+#   description = "ID of the VPC"
+#   default     = data.terraform_remote_state.aws_simulator_network.outputs.data.terraform_remote_state.aws_simulator_network.outputs.vpc_id
+# }
 
-variable "availability_zones" {
-  type        = list(string)
-  description = "List of Availability Zones"
-}
+# variable "data.terraform_remote_state.aws_simulator_network.outputs.azs" {
+#   type        = list(string)
+#   description = "List of Availability Zones"
+#   default     = data.terraform_remote_state.aws_simulator_network.outputs.azs
+# }
 
-variable "public_subnets_ids" {
-  type        = list(string)
-  description = "List of Public Subnets IDs"
-}
+# variable "data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids" {
+#   type        = list(string)
+#   description = "List of Public Subnets IDs"
+#   default     = data.terraform_remote_state.aws_simulator_network.outputs.data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids
+# }
 
-variable "private_subnets_ids" {
-  type        = list(string)
-  description = "List of Private Subnets IDs"
-}
+# variable "data.terraform_remote_state.aws_simulator_network.outputs.data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids" {
+#   type        = list(string)
+#   description = "List of Private Subnets IDs"
+#   default     = data.terraform_remote_state.aws_simulator_network.outputs.data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids
+# }
 
 variable "db_instance_size" {
   type        = string
@@ -63,7 +69,7 @@ variable "db_username" {
 
 variable "db_password" {
   type        = string
-  default     = ""
+  default     = "1qazWSX3edc"
   description = "DB password"
 }
 
