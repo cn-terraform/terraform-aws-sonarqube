@@ -16,7 +16,7 @@ resource "aws_kms_key" "encryption_key" {
 #------------------------------------------------------------------------------
 resource "aws_db_subnet_group" "aurora_db_subnet_group" {
   name       = "${var.name_prefix}-sonar-aurora-db-subnet-group"
-  subnet_ids = data.terraform_remote_state.aws_simulator_network.outputs.public_subnets_ids
+  subnet_ids = data.terraform_remote_state.devops_infra_shared.outputs.private_subnets_ids
 
   tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-db-subnet-group"
@@ -60,7 +60,7 @@ resource "aws_rds_cluster" "aurora_db" {
 # AWS RDS Aurora Cluster Instances
 #------------------------------------------------------------------------------
 resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
-  count                = length(data.terraform_remote_state.aws_simulator_network.outputs.azs)
+  count                = length(data.terraform_remote_state.devops_infra_shared.outputs.azs)
   identifier           = "aurora-db-instance-${count.index}"
   cluster_identifier   = aws_rds_cluster.aurora_db.id
   db_subnet_group_name = aws_db_subnet_group.aurora_db_subnet_group.id
@@ -79,7 +79,7 @@ resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
 resource "aws_security_group" "aurora_sg" {
   name        = "${var.name_prefix}-sonar-aurora-sg"
   description = "Allow traffic to Aurora DB only on PostgreSQL port and only coming from ECS SG"
-  vpc_id      = data.terraform_remote_state.aws_simulator_network.outputs.vpc_id
+  vpc_id      = data.terraform_remote_state.devops_infra_shared.outputs.vpc_id
   ingress {
     protocol  = "tcp"
     from_port = local.sonar_db_port
@@ -91,7 +91,7 @@ resource "aws_security_group" "aurora_sg" {
     # If the expression in the following list itself returns a list, remove the
     # brackets to avoid interpretation as a list of lists. If the expression
     # returns a single list item then leave it as-is and remove this TODO comment.
-    security_groups = [module.ecs_fargate.ecs_tasks_sg_id]
+    security_groups = [module.sg_sonarqube_container.this_security_group_id]
   }
   egress {
     protocol    = -1

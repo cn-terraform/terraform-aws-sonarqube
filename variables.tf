@@ -4,7 +4,7 @@
 variable "name_prefix" {
   type        = string
   description = "Name prefix for resources on AWS"
-  default     = "movai"
+  default     = "devops"
 }
 
 variable "tags" {
@@ -19,7 +19,7 @@ variable "tags" {
 variable "region" {
   type        = string
   description = "AWS Region the infrastructure is hosted in"
-  default     = "us-east-2"
+  default     = "us-east-1"
 }
 
 #------------------------------------------------------------------------------
