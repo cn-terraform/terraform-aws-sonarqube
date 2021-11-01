@@ -22,7 +22,7 @@ Pleas run this command right after cloning the repository.
         pre-commit install
 
 For that you may need to install the folowwing tools:
-* [Pre-commit](https://pre-commit.com/) 
+* [Pre-commit](https://pre-commit.com/)
 * [Terraform Docs](https://terraform-docs.io/)
 
 In order to run all checks at any point run the following command:
@@ -48,7 +48,7 @@ In order to run all checks at any point run the following command:
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_aws_cw_logs"></a> [aws\_cw\_logs](#module\_aws\_cw\_logs) | cn-terraform/cloudwatch-logs/aws | 1.0.8 |
-| <a name="module_ecs_fargate"></a> [ecs\_fargate](#module\_ecs\_fargate) | cn-terraform/ecs-fargate/aws | 2.0.26 |
+| <a name="module_ecs_fargate"></a> [ecs\_fargate](#module\_ecs\_fargate) | cn-terraform/ecs-fargate/aws | 2.0.28 |
 
 ## Resources
 
