@@ -67,7 +67,7 @@ resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
   engine               = "aurora-postgresql"
   engine_version       = local.sonar_db_engine_version
   instance_class       = local.sonar_db_instance_size
-  publicly_accessible  = true
+  publicly_accessible  = false
   tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-db-cluster-instances-${count.index}"
   }, var.tags)

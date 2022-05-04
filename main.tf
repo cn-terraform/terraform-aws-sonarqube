@@ -47,13 +47,16 @@ module "ecs_fargate" {
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096
-  lb_http_ports = {
-    default = {
-      listener_port     = 80
-      target_group_port = 9000
-    }
-  }
-  lb_https_ports = {}
+  enable_autoscaling           = var.enable_autoscaling
+
+  lb_http_ports = var.lb_http_ports
+
+  lb_https_ports = var.lb_https_ports
+
+  lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
+
+  default_certificate_arn = module.acm[0].acm_certificate_arn
+
   command = [
     "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
   ]
