@@ -55,7 +55,7 @@ module "ecs_fargate" {
 
   lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
 
-  default_certificate_arn = module.acm[0].acm_certificate_arn
+  default_certificate_arn = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
 
   command = [
     "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
