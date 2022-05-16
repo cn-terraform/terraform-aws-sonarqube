@@ -96,7 +96,7 @@ variable "lb_https_ports" {
 #------------------------------------------------------------------------------
 variable "db_engine_version" {
   type        = string
-  default     = "11.7"
+  default     = "14.2"
   description = "DB engine version"
 }
 
