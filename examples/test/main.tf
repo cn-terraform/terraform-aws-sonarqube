@@ -16,4 +16,13 @@ module "sonar" {
   public_subnets_ids  = module.base-network.public_subnets_ids
   private_subnets_ids = module.base-network.private_subnets_ids
   db_instance_size    = "db.t3.medium"
+  enable_ssl          = false
+  lb_https_ports      = {}
+  lb_http_ports = {
+    default = {
+      listener_port         = 80
+      target_group_port     = 9000
+      target_group_protocol = "HTTP"
+    }
+  }
 }
