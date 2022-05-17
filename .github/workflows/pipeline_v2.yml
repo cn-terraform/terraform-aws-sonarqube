@@ -1,4 +1,4 @@
-name: Terraform
+name: Terraform V2
 on: [push]
 jobs:
   check-format:
