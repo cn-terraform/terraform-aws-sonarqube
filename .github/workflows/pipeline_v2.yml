@@ -16,8 +16,8 @@ jobs:
       - uses: hashicorp/setup-terraform@v2
       - name: Terraform Init
 	id: init
-        run: terraform init -upgrade
-        working-directory: examples/test
+	run: terraform init -upgrade
+	working-directory: examples/test
       - name: Terraform Validate
 	id: validate
         run: terraform validate
