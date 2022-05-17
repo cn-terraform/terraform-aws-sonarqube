@@ -35,7 +35,7 @@ module "aws_cw_logs" {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.34"
+  version = "2.0.35"
   # source = "../terraform-aws-ecs-fargate"
 
   name_prefix                  = "${var.name_prefix}-sonar"
@@ -47,13 +47,16 @@ module "ecs_fargate" {
   container_cpu                = 4096
   container_memory             = 8192
   container_memory_reservation = 4096
-  lb_http_ports = {
-    default = {
-      listener_port     = 80
-      target_group_port = 9000
-    }
-  }
-  lb_https_ports = {}
+  enable_autoscaling           = var.enable_autoscaling
+
+  lb_http_ports = var.lb_http_ports
+
+  lb_https_ports = var.lb_https_ports
+
+  lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
+
+  default_certificate_arn = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
+
   command = [
     "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
   ]
