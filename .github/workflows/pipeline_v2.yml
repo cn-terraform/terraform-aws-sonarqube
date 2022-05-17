@@ -15,28 +15,28 @@ jobs:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
       - name: Terraform Init
-	id: init
-	run: terraform init -upgrade
-	working-directory: examples/test
+        id: init
+        run: terraform init -upgrade
+        working-directory: examples/test
       - name: Terraform Validate
-	id: validate
+        id: validate
         run: terraform validate
         working-directory: examples/test
-	continue-on-error: true
+        continue-on-error: true
 
   mock-plan:
     steps:
       - uses: actions/checkout@v3
       - uses: hashicorp/setup-terraform@v2
       - name: Terraform Init
-	id: init
+        id: init
         run: terraform init -upgrade
         working-directory: examples/test
       - name: Terraform Plan (Mock)
-	id: plan
+        id: plan
         run: terraform plan
         working-directory: examples/test
-	continue-on-error: true
+        continue-on-error: true
 
   infracost:
     name: Show infracost diff
