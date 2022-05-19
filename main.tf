@@ -48,6 +48,7 @@ module "ecs_fargate" {
   container_memory             = 8192
   container_memory_reservation = 4096
   enable_autoscaling           = var.enable_autoscaling
+  ephemeral_storage_size       = var.ephemeral_storage_size
 
   lb_http_ports = var.lb_http_ports
 
