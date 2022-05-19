@@ -117,6 +117,16 @@ variable "enable_autoscaling" {
 }
 
 #------------------------------------------------------------------------------
+# Sonarqube storage settings
+#------------------------------------------------------------------------------
+
+variable "ephemeral_storage_size" {
+  type        = number
+  description = "The number of GBs to provision for ephemeral storage on Fargate tasks. Must be greater than or equal to 21 and less than or equal to 200"
+  default     = 0
+}
+
+#------------------------------------------------------------------------------
 # Sonarqube SSL settings
 #------------------------------------------------------------------------------
 variable "enable_ssl" {
