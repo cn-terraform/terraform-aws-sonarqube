@@ -50,13 +50,18 @@ module "ecs_fargate" {
   enable_autoscaling           = var.enable_autoscaling
   ephemeral_storage_size       = var.ephemeral_storage_size
 
-  lb_http_ports = var.lb_http_ports
-
-  lb_https_ports = var.lb_https_ports
-
+  # Application Load Balancer
+  lb_http_ports                       = var.lb_http_ports
+  lb_https_ports                      = var.lb_https_ports
   lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
+  default_certificate_arn             = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
 
-  default_certificate_arn = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
+  # Application Load Balancer Logs
+  enable_s3_logs                                 = var.enable_s3_logs
+  block_s3_bucket_public_access                  = var.block_s3_bucket_public_access
+  enable_s3_bucket_server_side_encryption        = var.enable_s3_bucket_server_side_encryption
+  s3_bucket_server_side_encryption_sse_algorithm = var.s3_bucket_server_side_encryption_sse_algorithm
+  s3_bucket_server_side_encryption_key           = var.s3_bucket_server_side_encryption_key
 
   command = [
     "-Dsonar.search.javaAdditionalOpts=-Dnode.store.allow_mmap=false"
