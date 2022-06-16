@@ -60,7 +60,7 @@ resource "aws_rds_cluster" "aurora_db" {
 # AWS RDS Aurora Cluster Instances
 #------------------------------------------------------------------------------
 resource "aws_rds_cluster_instance" "aurora_db_cluster_instances" {
-  count                = length(var.availability_zones)
+  count                = length(var.private_subnets_ids)
   identifier           = "aurora-db-instance-${count.index}"
   cluster_identifier   = aws_rds_cluster.aurora_db.id
   db_subnet_group_name = aws_db_subnet_group.aurora_db_subnet_group.id
