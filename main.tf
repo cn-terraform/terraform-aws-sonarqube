@@ -23,11 +23,15 @@ resource "random_password" "master_password" {
 #------------------------------------------------------------------------------
 module "aws_cw_logs" {
   source  = "cn-terraform/cloudwatch-logs/aws"
-  version = "1.0.10"
+  version = "1.0.11"
   # source  = "../terraform-aws-cloudwatch-logs"
 
-  logs_path = "/ecs/service/${var.name_prefix}-sonar"
-  tags      = var.tags
+  create_kms_key              = var.create_kms_key
+  log_group_kms_key_id        = var.log_group_kms_key_id
+  log_group_retention_in_days = var.log_group_retention_in_days
+  logs_path                   = "/ecs/service/${var.name_prefix}-jenkins-master"
+
+  tags = var.tags
 }
 
 #------------------------------------------------------------------------------
