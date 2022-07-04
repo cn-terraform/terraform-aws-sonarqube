@@ -26,3 +26,10 @@ output "sonar_lb_zone_id" {
   value       = module.ecs_fargate.aws_lb_lb_zone_id
 }
 
+#------------------------------------------------------------------------------
+# AWS SECURITY GROUPS
+#------------------------------------------------------------------------------
+output "ecs_tasks_sg_id" {
+  description = "SonarQube ECS Tasks Security Group - The ID of the security group"
+  value       = module.ecs_fargate.ecs_tasks_sg_id
+}
