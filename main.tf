@@ -48,9 +48,9 @@ module "ecs_fargate" {
   private_subnets_ids          = var.private_subnets_ids
   container_name               = "${var.name_prefix}-sonar"
   container_image              = var.sonarqube_image
-  container_cpu                = 4096
-  container_memory             = 8192
-  container_memory_reservation = 4096
+  container_cpu                = var.container_cpu
+  container_memory             = var.container_memory
+  container_memory_reservation = var.container_memory_reservation
   enable_autoscaling           = var.enable_autoscaling
   ephemeral_storage_size       = var.ephemeral_storage_size
   volumes                      = var.volumes
