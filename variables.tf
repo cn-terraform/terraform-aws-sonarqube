@@ -231,6 +231,12 @@ variable "container_cpu" {
   default     = 4096 # 4 vCPU
 }
 
+variable "permissions_boundary" {
+  description = "(Optional) The ARN of the policy that is used to set the permissions boundary for the `ecs_task_execution_role` role."
+  type        = string
+  default     = null
+}
+
 #------------------------------------------------------------------------------
 # Sonarqube SSL settings
 #------------------------------------------------------------------------------

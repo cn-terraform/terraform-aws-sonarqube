@@ -55,6 +55,7 @@ module "ecs_fargate" {
   ephemeral_storage_size       = var.ephemeral_storage_size
   volumes                      = var.volumes
   mount_points                 = var.mount_points
+  permissions_boundary         = var.permissions_boundary
 
   # Application Load Balancer
   lb_http_ports                       = var.lb_http_ports
