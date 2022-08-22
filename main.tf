@@ -61,6 +61,7 @@ module "ecs_fargate" {
   lb_http_ports                       = var.lb_http_ports
   lb_https_ports                      = var.lb_https_ports
   lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
+  lb_waf_web_acl_arn                  = var.lb_waf_web_acl_arn
   default_certificate_arn             = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
 
   # Application Load Balancer Logs
