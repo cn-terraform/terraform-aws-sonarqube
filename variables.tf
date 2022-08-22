@@ -38,6 +38,34 @@ variable "private_subnets_ids" {
   description = "List of Private Subnets IDs"
 }
 
+variable "lb_enable_cross_zone_load_balancing" {
+  type        = string
+  default     = "true"
+  description = "Enable cross zone support for LB"
+}
+
+variable "lb_http_ports" {
+  description = "Map containing objects to define listeners behaviour based on type field. If type field is `forward`, include listener_port and the target_group_port. For `redirect` type, include listener port, host, path, port, protocol, query and status_code. For `fixed-response`, include listener_port, content_type, message_body and status_code"
+  type        = map(any)
+  default     = {}
+}
+
+variable "lb_https_ports" {
+  description = "Map containing objects to define listeners behaviour based on type field. If type field is `forward`, include listener_port and the target_group_port. For `redirect` type, include listener port, host, path, port, protocol, query and status_code. For `fixed-response`, include listener_port, content_type, message_body and status_code"
+  type        = map(any)
+  default = {
+    default = {
+      listener_port         = 443
+      target_group_port     = 9000
+      target_group_protocol = "HTTP"
+    }
+  }
+}
+
+#------------------------------------------------------------------------------
+# AWS Database
+#------------------------------------------------------------------------------
+
 variable "db_instance_size" {
   type        = string
   default     = "db.r4.large"
@@ -62,28 +90,16 @@ variable "db_password" {
   description = "DB password"
 }
 
-variable "lb_enable_cross_zone_load_balancing" {
-  type        = string
-  default     = "true"
-  description = "Enable cross zone support for LB"
+variable "db_deletion_protection" {
+  description = "If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false."
+  type        = bool
+  default     = false
 }
 
-variable "lb_http_ports" {
-  description = "Map containing objects to define listeners behaviour based on type field. If type field is `forward`, include listener_port and the target_group_port. For `redirect` type, include listener port, host, path, port, protocol, query and status_code. For `fixed-response`, include listener_port, content_type, message_body and status_code"
-  type        = map(any)
-  default     = {}
-}
-
-variable "lb_https_ports" {
-  description = "Map containing objects to define listeners behaviour based on type field. If type field is `forward`, include listener_port and the target_group_port. For `redirect` type, include listener port, host, path, port, protocol, query and status_code. For `fixed-response`, include listener_port, content_type, message_body and status_code"
-  type        = map(any)
-  default = {
-    default = {
-      listener_port         = 443
-      target_group_port     = 9000
-      target_group_protocol = "HTTP"
-    }
-  }
+variable "db_backup_retention_period" {
+  description = "The days to retain backups for. Default 3"
+  type        = number
+  default     = 3
 }
 
 #------------------------------------------------------------------------------
