@@ -33,6 +33,7 @@ resource "aws_rds_cluster" "aurora_db" {
   cluster_identifier     = "${var.name_prefix}-sonar-aurora-db"
   vpc_security_group_ids = [aws_security_group.aurora_sg.id]
   db_subnet_group_name   = aws_db_subnet_group.aurora_db_subnet_group.id
+  deletion_protection    = var.db_deletion_protection
 
   # Encryption
   storage_encrypted = true
@@ -48,9 +49,10 @@ resource "aws_rds_cluster" "aurora_db" {
   master_password = local.sonar_db_password
 
   # Backups
-  backup_retention_period = 3
+  backup_retention_period = var.db_backup_retention_period
   preferred_backup_window = "07:00-09:00"
   skip_final_snapshot     = true
+  copy_tags_to_snapshot   = true
   tags = merge({
     Name = "${var.name_prefix}-sonar-aurora-db"
   }, var.tags)
