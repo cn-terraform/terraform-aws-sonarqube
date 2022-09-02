@@ -171,6 +171,11 @@ variable "db_engine_version" {
   description = "DB engine version"
 }
 
+variable "db_instance_number" {
+  description = "Number of instance deployed on Aurora. By default, number of subnet in private_subnets_ids"
+  type        = number
+  default     = null
+}
 #------------------------------------------------------------------------------
 # Sonarqube image version
 #------------------------------------------------------------------------------
