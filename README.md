@@ -42,8 +42,8 @@ In order to run all checks at any point run the following command:
 
 | Name | Version |
 |------|---------|
-| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.27.0 |
-| <a name="provider_random"></a> [random](#provider\_random) | 3.3.2 |
+| <a name="provider_aws"></a> [aws](#provider\_aws) | 4.29.0 |
+| <a name="provider_random"></a> [random](#provider\_random) | 3.4.2 |
 
 ## Modules
 
@@ -77,6 +77,7 @@ In order to run all checks at any point run the following command:
 | <a name="input_db_backup_retention_period"></a> [db\_backup\_retention\_period](#input\_db\_backup\_retention\_period) | The days to retain backups for. Default 3 | `number` | `3` | no |
 | <a name="input_db_deletion_protection"></a> [db\_deletion\_protection](#input\_db\_deletion\_protection) | If the DB instance should have deletion protection enabled. The database can't be deleted when this value is set to true. The default is false. | `bool` | `false` | no |
 | <a name="input_db_engine_version"></a> [db\_engine\_version](#input\_db\_engine\_version) | DB engine version | `string` | `"14.2"` | no |
+| <a name="input_db_instance_number"></a> [db\_instance\_number](#input\_db\_instance\_number) | Number of instance deployed on Aurora. By default, number of subnet in private\_subnets\_ids | `number` | `null` | no |
 | <a name="input_db_instance_size"></a> [db\_instance\_size](#input\_db\_instance\_size) | DB instance size | `string` | `"db.r4.large"` | no |
 | <a name="input_db_name"></a> [db\_name](#input\_db\_name) | Default DB name | `string` | `"sonar"` | no |
 | <a name="input_db_password"></a> [db\_password](#input\_db\_password) | DB password | `string` | `""` | no |
