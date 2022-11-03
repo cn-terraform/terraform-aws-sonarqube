@@ -167,7 +167,7 @@ variable "s3_bucket_server_side_encryption_key" {
 #------------------------------------------------------------------------------
 variable "db_engine_version" {
   type        = string
-  default     = "14.2"
+  default     = "14.4"
   description = "DB engine version"
 }
 
