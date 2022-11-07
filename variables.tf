@@ -132,6 +132,12 @@ variable "log_group_retention_in_days" {
 #------------------------------------------------------------------------------
 # APPLICATION LOAD BALANCER LOGS
 #------------------------------------------------------------------------------
+variable "custom_lb_arn" {
+  description = "ARN of the Load Balancer to use in the ECS service. If provided, this module will not create a load balancer and will use the one provided in this variable"
+  type        = string
+  default     = null
+}
+
 variable "enable_s3_logs" {
   description = "(Optional) If true, all resources to send LB logs to S3 will be created"
   type        = bool
