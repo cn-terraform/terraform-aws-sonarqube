@@ -57,6 +57,10 @@ module "ecs_fargate" {
   mount_points                 = var.mount_points
   permissions_boundary         = var.permissions_boundary
 
+  # Deployment circuit breaker
+  deployment_circuit_breaker_enabled  = var.deployment_circuit_breaker_enabled
+  deployment_circuit_breaker_rollback = var.deployment_circuit_breaker_rollback
+
   # Application Load Balancer
   custom_lb_arn                       = var.custom_lb_arn
   lb_http_ports                       = var.lb_http_ports
