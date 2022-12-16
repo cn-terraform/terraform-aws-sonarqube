@@ -39,7 +39,7 @@ module "aws_cw_logs" {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.48"
+  version = "2.0.49"
   # source = "../terraform-aws-ecs-fargate"
 
   name_prefix                  = "${var.name_prefix}-sonar"
@@ -56,6 +56,10 @@ module "ecs_fargate" {
   volumes                      = var.volumes
   mount_points                 = var.mount_points
   permissions_boundary         = var.permissions_boundary
+
+  # Deployment circuit breaker
+  deployment_circuit_breaker_enabled  = var.deployment_circuit_breaker_enabled
+  deployment_circuit_breaker_rollback = var.deployment_circuit_breaker_rollback
 
   # Application Load Balancer
   custom_lb_arn                       = var.custom_lb_arn
