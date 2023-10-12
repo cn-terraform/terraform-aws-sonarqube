@@ -16,7 +16,7 @@ module "acm" {
   count = var.enable_ssl ? 1 : 0
 
   source  = "terraform-aws-modules/acm/aws"
-  version = "~> 4.0"
+  version = "~> 5.0"
 
   domain_name = var.https_record_domain_name
   zone_id     = var.dns_zone_id
