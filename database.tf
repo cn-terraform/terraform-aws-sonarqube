@@ -48,6 +48,16 @@ resource "aws_rds_cluster" "aurora_db" {
   master_username = local.sonar_db_username
   master_password = local.sonar_db_password
 
+  # Serverless
+  dynamic "serverlessv2_scaling_configuration" {
+    for_each = local.sonar_db_instance_size == "db.serverless" ? [0] : []
+    content {
+      max_capacity             = 256
+      min_capacity             = 0
+      seconds_until_auto_pause = 3600
+    }
+  }
+
   # Backups
   backup_retention_period = var.db_backup_retention_period
   preferred_backup_window = "07:00-09:00"
