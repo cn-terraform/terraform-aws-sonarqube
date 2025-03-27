@@ -8,6 +8,9 @@ locals {
   sonar_db_name           = var.db_name
   sonar_db_username       = var.db_username
   sonar_db_password       = var.db_password == "" ? random_password.master_password.result : var.db_password
+  default_certificate_arn = (
+    var.default_certificate_arn == "" && var.enable_ssl
+  ) ? try(module.acm[0].acm_certificate_arn, null) : var.default_certificate_arn
 }
 
 #------------------------------------------------------------------------------
@@ -39,7 +42,7 @@ module "aws_cw_logs" {
 #------------------------------------------------------------------------------
 module "ecs_fargate" {
   source  = "cn-terraform/ecs-fargate/aws"
-  version = "2.0.52"
+  version = "2.0.53"
   # source = "../terraform-aws-ecs-fargate"
 
   name_prefix                  = "${var.name_prefix}-sonar"
@@ -67,7 +70,8 @@ module "ecs_fargate" {
   lb_https_ports                      = var.lb_https_ports
   lb_enable_cross_zone_load_balancing = var.lb_enable_cross_zone_load_balancing
   lb_waf_web_acl_arn                  = var.lb_waf_web_acl_arn
-  default_certificate_arn             = var.enable_ssl ? module.acm[0].acm_certificate_arn : null
+  default_certificate_arn             = var.enable_ssl || var.default_certificate_arn != "" ? local.default_certificate_arn : null
+
 
   # Application Load Balancer Logs
   enable_s3_logs                                 = var.enable_s3_logs
