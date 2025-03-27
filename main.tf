@@ -8,8 +8,9 @@ locals {
   sonar_db_name           = var.db_name
   sonar_db_username       = var.db_username
   sonar_db_password       = var.db_password == "" ? random_password.master_password.result : var.db_password
-
-  default_certificate_arn = var.default_certificate_arn == "" || var.enable_ssl == true ? module.acm[0].acm_certificate_arn : var.default_certificate_arn
+  default_certificate_arn = (
+    var.default_certificate_arn == "" && var.enable_ssl
+  ) ? try(module.acm[0].acm_certificate_arn, null) : var.default_certificate_arn
 }
 
 #------------------------------------------------------------------------------
