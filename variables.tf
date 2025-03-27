@@ -309,3 +309,9 @@ variable "https_record_domain_name" {
   type        = string
   default     = ""
 }
+
+variable "default_certificate_arn" {
+  description = "ACM certificate ARN if you plan to manage it yourself"
+  type        = string
+  default     = ""
+}
