@@ -48,8 +48,8 @@ module "sonar" {
   name_prefix         = "sonar"
   region              = "us-east-1"
   vpc_id              = module.base-network.vpc_id
-  public_subnets_ids  = module.base-network.public_subnets_ids
-  private_subnets_ids = module.base-network.private_subnets_ids
+  public_subnets_ids  = module.base-network.public_subnets
+  private_subnets_ids = module.base-network.private_subnets
   db_instance_size    = "db.t3.medium"
   enable_ssl          = false
   lb_https_ports      = {}
