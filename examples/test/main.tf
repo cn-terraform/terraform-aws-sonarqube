@@ -13,11 +13,11 @@ module "base-network" {
       availability_zone = "us-east-1b"
       cidr_block        = "192.168.32.0/19"
     }
-  third_public_subnet = {
+    third_public_subnet = {
       availability_zone = "us-east-1c"
       cidr_block        = "192.168.64.0/19"
     }
-  fourth_public_subnet = {
+    fourth_public_subnet = {
       availability_zone = "us-east-1d"
       cidr_block        = "192.168.96.0/19"
     }
