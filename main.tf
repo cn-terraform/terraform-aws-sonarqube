@@ -26,7 +26,7 @@ resource "random_password" "master_password" {
 #------------------------------------------------------------------------------
 module "aws_cw_logs" {
   source  = "cn-terraform/cloudwatch-logs/aws"
-  version = "1.0.12"
+  version = "1.0.13"
   # source  = "../terraform-aws-cloudwatch-logs"
 
   create_kms_key              = var.create_kms_key
